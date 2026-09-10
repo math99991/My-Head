@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My-Head</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<main>
+  <h1 class="title">Transformação do Sasuke</h1>
+
+  <div class="photo-wrap" id="photo-wrap">
+    <div class="halo"></div>
+    <div class="photo-frame" id="photo-frame">
+      <img id="img-normal" src="foto-normal.jpg" alt="Foto de perfil">
+      <img id="img-transformed" src="foto-transformada.jpg" alt="Foto de perfil transformada">
+    </div>
+  </div>
+
+  <p class="hint">clique na foto</p>
+
+  <p class="message">
+    Toda mudança de verdade dói um pouco antes de fazer sentido.
+    <span>O que te transforma nunca é só o que você vê — é o que você decide carregar depois.</span>
+  </p>
+</main>
+
+<footer class="credits">Programado por Matheus, 2026</footer>
+
+<script>
+  const wrap = document.getElementById('photo-wrap');
+  const frame = document.getElementById('photo-frame');
+  const body = document.body;
+  const particlesEl = document.getElementById('particles');
+  let awakened = false;
+
+  function spawnParticles(count) {
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = (45 + Math.random() * 10) + 'vw';
+      p.style.top = (55 + Math.random() * 10) + 'vh';
+      p.style.animationDelay = (Math.random() * 5) + 's';
+      p.style.animationDuration = (5 + Math.random() * 3) + 's';
+      particlesEl.appendChild(p);
+    }
+  }
+
+  spawnParticles(28);
+
+  wrap.addEventListener('click', () => {
+    if (awakened) return;
+    awakened = true;
+    frame.classList.add('flash');
+    setTimeout(() => frame.classList.remove('flash'), 600);
+    body.classList.add('awakened');
+  });
+</script>
+
+</body>
+</html>
